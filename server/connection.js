@@ -37,6 +37,9 @@ async function putBookMapping () {
   const schema = {
     title: { type: 'keyword' },
     author: { type: 'keyword' },
+	url_original: { type: 'keyword'},
+	url_youtube: {type: 'keyword'},
+	url_ivoox: {type: 'keyword'},
     location: { type: 'integer' },
     text: { type: 'text' }
   }

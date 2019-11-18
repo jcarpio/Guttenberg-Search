@@ -10,6 +10,10 @@ function parseBookFile (filePath) {
   // Find book title and author
   const title = book.match(/^Title:\s(.+)$/m)[1]
   const authorMatch = book.match(/^Author:\s(.+)$/m)
+  const url_youtube = book.match(/^Url Youtube:\s(.+)$/m)
+  const url_original = book.match(/^Url Original:\s(.+)$/m)
+  const url_ivoox = book.match(/^Url Ivoox:\s(.+)$/m)
+  
   const author = (!authorMatch || authorMatch[1].trim() === '') ? 'Unknown Author' : authorMatch[1]
 
   console.log(`Reading Book - ${title} By ${author}`)
@@ -28,11 +32,11 @@ function parseBookFile (filePath) {
     .filter((line) => (line && line !== '')) // Remove empty lines
 
   console.log(`Parsed ${paragraphs.length} Paragraphs\n`)
-  return { title, author, paragraphs }
+  return { title, author, url_original, url_youtube, url_ivoox, paragraphs }
 }
 
 /** Bulk index the book data in ElasticSearch */
-async function insertBookData (title, author, paragraphs) {
+async function insertBookData (title, author, url_original, url_youtube, url_ivoox, paragraphs) {
   let bulkOps = [] // Array to store bulk operations
 
   // Add an index operation for each section in the book
@@ -44,6 +48,9 @@ async function insertBookData (title, author, paragraphs) {
     bulkOps.push({
       author,
       title,
+	  url_original, 
+	  url_youtube, 
+	  url_ivoox,
       location: i,
       text: paragraphs[i]
     })
@@ -76,8 +83,8 @@ async function readAndInsertBooks () {
     for (let file of files) {
       console.log(`Reading File - ${file}`)
       const filePath = path.join('./books', file)
-      const { title, author, paragraphs } = parseBookFile(filePath)
-      await insertBookData(title, author, paragraphs)
+      const { title, author, url_original, url_youtube, url_ivoox, paragraphs } = parseBookFile(filePath)
+      await insertBookData(title, author, url_original, url_youtube, url_ivoox, paragraphs)
     }
   } catch (err) {
     console.error(err)
