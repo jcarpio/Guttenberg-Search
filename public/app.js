@@ -80,6 +80,25 @@ const vm = new Vue ({
         console.error(err)
       }
     },
+	async openNewWindowUrlYoutube(searchHit) {
+	   try {	   
+		  /* const textString  = hit.highlight.text[0]
+		  const (youtubeHourStart, youtubeMinStart, youtubeSecStart) = textString.match(/^([0-9]+):([0-9]+):([0-9])/m)
+		  const youtubeMinStart = textString.match(/^([0-9]+)$:([0-9]+)$:([0-9]+)$/m)[1]
+		  const youtubeSecStart = textString.match(/^([0-9]+)$:([0-9]+)$:([0-9]+)$/m)[2]
+		  const youtubeHourStart = textString.match(/^([0-9]+)$/m)[1] 
+		  */
+		  const youtubeHourStart = 0
+          const youtubeMinStart = 35
+		  const youtubeSecStart = 31
+		  const urlStr = searchHit._source.url_youtube + "?t=" +  youtubeHourStart + "h" + youtubeMinStart + "m" + youtubeSecStart + "s"
+		  
+	      window.open(urlStr) 
+       } catch (err) {
+          console.error(err)
+       }		   
+		
+	},
     /** Close the book detail modal */
     closeBookModal () {
       document.body.style.overflow = 'auto'

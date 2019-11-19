@@ -16,7 +16,7 @@ function parseBookFile (filePath) {
   
   const author = (!authorMatch || authorMatch[1].trim() === '') ? 'Unknown Author' : authorMatch[1]
   
-  console.log(`Reading Book - ${title} By ${author}`)
+  console.log(`Reading Book - ${title} By ${author} with url_youtube ${url_youtube}`)
 
   // Find Guttenberg metadata header and footer
   const startOfBookMatch = book.match(/^\*{3}\s*START OF (THIS|THE) PROJECT GUTENBERG EBOOK.+\*{3}$/m)
