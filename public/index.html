@@ -38,8 +38,10 @@
       <div class="mui-panel" v-for="hit in searchResults" v-on:click="showBookModal(hit)">
         <div class="mui--text-title" v-html="hit.highlight.text[0]"></div>
         <div class="mui-divider"></div>
-        <div class="mui--text-subhead">{{ hit._source.title }} - {{ hit._source.author }} - {{ hit._source.url_youtube }} </div>
-        <div class="mui--text-body2">Location {{ hit._source.location }}</div>
+        <div class="mui--text-subhead">{{ hit._source.title }} - {{ hit._source.author }} </div>
+        
+		<div class="mui--text-body2"><a href="- {{ hit._source.url_youtube }}">YouTube</a></div>
+		
       </div>
     </div>
 

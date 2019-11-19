@@ -10,12 +10,12 @@ function parseBookFile (filePath) {
   // Find book title and author
   const title = book.match(/^Title:\s(.+)$/m)[1]
   const authorMatch = book.match(/^Author:\s(.+)$/m)
-  const url_youtube = book.match(/^Url Youtube:\s(.+)$/m)
-  const url_original = book.match(/^Url Original:\s(.+)$/m)
-  const url_ivoox = book.match(/^Url Ivoox:\s(.+)$/m)
+  const url_youtube = book.match(/^Url Youtube:\s(.+)$/m)[1]
+  const url_original = book.match(/^Url Original:\s(.+)$/m)[1]
+  const url_ivoox = book.match(/^Url Ivoox:\s(.+)$/m)[1]
   
   const author = (!authorMatch || authorMatch[1].trim() === '') ? 'Unknown Author' : authorMatch[1]
-
+  
   console.log(`Reading Book - ${title} By ${author}`)
 
   // Find Guttenberg metadata header and footer
