@@ -82,15 +82,12 @@ const vm = new Vue ({
     },
 	async openNewWindowUrlYoutube(searchHit) {
 	   try {	   
-		  /* const textString  = hit.highlight.text[0]
-		  const (youtubeHourStart, youtubeMinStart, youtubeSecStart) = textString.match(/^([0-9]+):([0-9]+):([0-9])/m)
-		  const youtubeMinStart = textString.match(/^([0-9]+)$:([0-9]+)$:([0-9]+)$/m)[1]
-		  const youtubeSecStart = textString.match(/^([0-9]+)$:([0-9]+)$:([0-9]+)$/m)[2]
-		  const youtubeHourStart = textString.match(/^([0-9]+)$/m)[1] 
-		  */
-		  const youtubeHourStart = 0
-          const youtubeMinStart = 35
-		  const youtubeSecStart = 31
+		  const textString  = searchHit.highlight.text[0]
+
+		  const youtubeHourStart = textString.match(/^(\d+)/)[1] 
+		  const youtubeMinStart = textString.match(/^\d+:(\d+)/)[1]
+		  const youtubeSecStart = textString.match(/^\d+:\d+:(\d+)/)[1]
+
 		  const urlStr = searchHit._source.url_youtube + "?t=" +  youtubeHourStart + "h" + youtubeMinStart + "m" + youtubeSecStart + "s"
 		  
 	      window.open(urlStr) 

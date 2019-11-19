@@ -10,9 +10,13 @@ function parseBookFile (filePath) {
   // Find book title and author
   const title = book.match(/^Title:\s(.+)$/m)[1]
   const authorMatch = book.match(/^Author:\s(.+)$/m)
-  const url_youtube = book.match(/^Url Youtube:\s(.+)$/m)[1]
-  const url_original = book.match(/^Url Original:\s(.+)$/m)[1]
-  const url_ivoox = book.match(/^Url Ivoox:\s(.+)$/m)[1]
+  var url_youtube = book.match(/^Url Youtube:\s(.+)$/m)[1]
+  var url_original = book.match(/^Url Original:\s(.+)$/m)[1]
+  var url_ivoox = book.match(/^Url Ivoox:\s(.+)$/m)[1]
+  
+  url_youtube = url_youtube.trim()
+  url_original = url_original.trim()
+  url_ivoox = url_ivoox.trim()
   
   const author = (!authorMatch || authorMatch[1].trim() === '') ? 'Unknown Author' : authorMatch[1]
   
