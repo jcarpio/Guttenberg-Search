@@ -34,7 +34,7 @@
     </div>
 
     <!-- Search Results Card List -->
-    <div class="search-results" ref="searchResults">  
+    <div class="search-results" ref="searchResults">
       <div class="mui-panel" v-for="hit in searchResults" v-on:click="openNewWindowUrlYoutube(hit)">
         <div class="mui--text-title" v-html="hit.highlight.text[0]"></div>
         <div class="mui-divider"></div>

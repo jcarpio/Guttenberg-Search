@@ -80,21 +80,25 @@ const vm = new Vue ({
         console.error(err)
       }
     },
+    async cutFirstNumbers(string) {
+	    try {
+           const newString = string.match(/^\d+(.*)/)[0]
+		   return newString
+        } catch (err) {
+			console.error(err) 
+        }			
+    },
 	async openNewWindowUrlYoutube(searchHit) {
 	   try {	   
 		  const textString  = searchHit.highlight.text[0]
-
 		  const youtubeHourStart = textString.match(/^(\d+)/)[1] 
 		  const youtubeMinStart = textString.match(/^\d+:(\d+)/)[1]
 		  const youtubeSecStart = textString.match(/^\d+:\d+:(\d+)/)[1]
-
 		  const urlStr = searchHit._source.url_youtube + "?t=" +  youtubeHourStart + "h" + youtubeMinStart + "m" + youtubeSecStart + "s"
-		  
 	      window.open(urlStr) 
        } catch (err) {
           console.error(err)
-       }		   
-		
+       }		   	
 	},
     /** Close the book detail modal */
     closeBookModal () {
