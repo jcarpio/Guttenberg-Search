@@ -4,7 +4,7 @@ const elasticsearch = require('elasticsearch')
 const index = 'library'
 const type = 'book'
 const port = 9200
-const host = process.env.ES_HOST || 'localhost'
+const host = process.env.ES_HOST || '10.128.0.3'
 const client = new elasticsearch.Client({ host: { host, port } })
 
 /** Check the ES connection status */

@@ -2,7 +2,7 @@ const vm = new Vue ({
   el: '#vue-instance',
   data () {
     return {
-      baseUrl: 'http://localhost:3000', // API url
+      baseUrl: 'http://34.69.175.83:3000', // API url
       searchTerm: 'Camaron', // Default search term
       searchDebounce: null, // Timeout for search bar debounce
       searchResults: [], // Displayed search results
