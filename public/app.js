@@ -3,7 +3,7 @@ const vm = new Vue ({
   data () {
     return {
       baseUrl: 'http://localhost:3000', // API url
-      searchTerm: 'Flamenco', // Default search term
+      searchTerm: 'Camarón', // Default search term
       searchDebounce: null, // Timeout for search bar debounce
       searchResults: [], // Displayed search results
       numHits: null, // Total search results found
